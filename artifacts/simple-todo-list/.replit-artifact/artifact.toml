@@ -1,0 +1,24 @@
+kind = "mobile"
+previewPath = "/"
+title = "Simple To-Do List"
+description = "A lightweight personal to-do app for quickly capturing tasks, checking them off, and removing them, with tasks saved locally on the device."
+version = "1.0.0"
+id = "artifacts/simple-todo-list"
+router = "expo-domain"
+
+[[services]]
+name = "expo"
+ensurePreviewReachable = "/status"
+paths = [ "/" ]
+localPort = 21244
+
+[services.development]
+run = "pnpm --filter @workspace/simple-todo-list run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/simple-todo-list", "run", "build" ]
+run = [ "pnpm", "--filter", "@workspace/simple-todo-list", "run", "serve" ]
+
+[services.env]
+PORT = "21244"
+BASE_PATH = "/"
